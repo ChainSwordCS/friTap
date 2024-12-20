@@ -428,7 +428,8 @@ class SSL_Logger():
     def start_fritap_session(self, own_message_handler=None):
 
         if self.mobile:
-            self.device = frida.get_usb_device()
+            # get device by matching its id
+            self.device = frida.get_device("00008030-0009659E0E99802E")
         elif self.host:
             self.device = frida.get_device_manager().add_remote_device(self.host)
         else:
